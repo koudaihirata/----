@@ -6,17 +6,37 @@ const commentArea = document.querySelector(".comment_area");
 // console.log(commentArea)
 const textBox = document.getElementById("text");
 
+
 sendBtn.addEventListener( "click", () =>{
     // console.log("aaa")
-    let div = document.createElement("div");
-    div.classList.add("comment");
-    let randomTop = Math.floor(Math.random() * 71) +10;
-    let randomLeft = Math.floor(Math.random() * 71) +5;
-    div.innerHTML= textBox.value
-    div.style.top = randomTop + "%";
-    div.style.left = randomLeft + "%"
-    commentArea.appendChild(div)
+    let comment = document.createElement("div");
+
+    comment.classList.add("comment");
+
+    comment.innerHTML= textBox.value;
+
+    let randomLeft = Math.floor(Math.random() * (commentArea.offsetWidth - 300));
+    let randomTop = Math.floor(Math.random() * (commentArea.offsetHeight - 100));
+
+
+    comment.style.top = randomTop + "px";
+    comment.style.left = randomLeft + "px";
+    commentArea.appendChild(comment)
 });
-resetBtn.addEventListener( "click", () =>{
-    commentArea.textContent = "";
-})
+
+
+resetBtn.addEventListener("click", () => {
+    let comments = document.querySelectorAll(".comment");
+    
+    for (let i = 0; i < comments.length; i++) {
+        console.log("aaa");
+        comments[i].classList.add("disappear");
+    }
+
+
+    setTimeout(function() {
+        commentArea.textContent = "";
+    }, 1000);
+    
+    
+});

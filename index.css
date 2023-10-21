@@ -44,8 +44,26 @@ html,body{
     position: absolute;
     top: 50%;
     left: 50%;
+    box-shadow: 6px 6px 10px 0px rgba(0, 0, 0, 0.4);
+    animation-name: bounce;
+    animation-duration: 1s;
+}
+@keyframes bounce {
+    0%   { transform: translateY(0); opacity: 0; }
+    50%  { transform: translateY(-20px); opacity: 0.5; }
+    100% { transform: translateY(0); opacity: 1; }
 }
 
+.disappear{
+    animation-name: fadeOut;
+    animation-duration: 1s;
+}
+
+@keyframes fadeOut{
+    0% { transform: translateY(0); opacity: 1;}
+    50%  { transform: translateY(-20px); opacity: 0.5;}
+    100%   { transform: translateY(0);opacity: 0;}
+}
 /* .hide{
     display: none;
 } */
