@@ -27,7 +27,8 @@ html,body{
 }
 
 .comment_area{
-    background-color: aqua;
+    background: rgb(171,218,163);
+    background: linear-gradient(145deg, rgba(171,218,163,1) 48%, rgba(255,241,136,1) 100%);
     width: 100%;
     height: 80%;
     position: relative;
@@ -37,16 +38,36 @@ html,body{
     background-color: #fff;
     width: 300px;
     height: 100px;
-    border-radius: 12px;
+    border-radius: 50px;
     font-size: 30px;
     text-align: center;
     line-height: 100px;
     position: absolute;
     top: 50%;
     left: 50%;
-    box-shadow: 6px 6px 10px 0px rgba(0, 0, 0, 0.4);
+    filter:drop-shadow(6px 6px 10px rgba(0, 0, 0, 0.4));
     animation-name: bounce;
     animation-duration: 1s;
+}
+.comment:hover{
+    background-color: #dddddd;
+}
+.comment::before,.comment::after{
+    content: "";
+    position: absolute;
+    bottom: -19.5px; /* 吹き出しの位置を下部に移動 */
+    left: 50%; /* 吹き出しを中央に配置 */
+    transform: translateX(-50%); /* 吹き出しの位置を調整 */
+    border-width: 20px 20px 0; /* 吹き出しの形状を調整 */
+    border-style: solid;
+    border-color: #fff transparent transparent; /*吹き出しの色と透明度を調整 */
+}
+.comment:hover::after,.comment:hover::before{
+    border-color: #dddddd transparent ;
+}
+.comment::before{
+    border-color: rgba(0,0,0,0.1) transparent transparent; /* 影の色と透明度を調整 */
+    /* bottom: -20px; 影の位置を調整 */
 }
 @keyframes bounce {
     0%   { transform: translateY(0); opacity: 0; }
@@ -67,4 +88,37 @@ html,body{
 /* .hide{
     display: none;
 } */
+
+.delete{
+    position: absolute;
+    top: -0.5em;
+    left: 85%;
+    width: 32px;
+    height: 32px;
+    background-color: #fff;
+    border-radius: 100%;
+    box-shadow: 0px 0px 15px -5px #777777;
+    visibility: hidden;
+}
+.comment:hover .delete{
+    visibility: visible;
+}
+.delete::before,.delete::after{
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: 8px;
+    width: 24px;
+    height: 24px;
+    border-bottom: #333 3px solid;
+}
+.delete::before{
+    transform: translateX(-5px) rotate(45deg);
+    transform-origin: center bottom;
+}
+.delete::after{
+    /* transform: rotate(-45deg); */
+    transform: translateX(-3px) rotate(-45deg);
+    transform-origin: center bottom;
+}
 
