@@ -34,7 +34,7 @@ resetBtn.addEventListener("click", () => {
     }
 
 
-    setTimeout(function() {
+    setTimeout( () => {
         commentArea.textContent = "";
     }, 1000);
     
