@@ -32,7 +32,28 @@ sendBtn.addEventListener( "click", () =>{
     comment.style.left = randomLeft + "px";
 
     // コメントエリアに新しいコメントを追加
-    commentArea.appendChild(comment)
+    commentArea.appendChild(comment);
+
+
+// ".comment"というクラスを持つすべての要素を選択し、それらを"comments"という変数に格納します。
+    let comments = document.querySelectorAll(".comment");
+
+    // "comments"変数に格納された各要素（コメント）に対して、次の操作を行います。
+    comments.forEach((comment) => {
+        // 各コメント要素に対して、"dblclick"（ダブルクリック）イベントリスナーを追加します。
+        comment.addEventListener("dblclick", () => {
+            // ダブルクリックされたコメント要素に"disappear"というクラスを追加します。
+            // これにより、CSSで定義された"disappear"クラスのスタイルが適用され、コメントが表示から消える（または他の効果が適用される）ことでしょう。
+            comment.classList.add("disappear");
+            
+            // 各コメント要素に対して、"animationend"（アニメーション終了）イベントリスナーを追加します。
+            comment.addEventListener("animationend", () => {
+                // アニメーションが終了したら、コメント要素を完全に削除します。
+                comment.remove();
+            });
+        });
+    });    
+    
 });
 
 
@@ -63,11 +84,4 @@ resetBtn.addEventListener("click", () => {
     });
 });
 
-const Delete = document.querySelector(".delete");
 
-Delete.addEventListener("click", () => {
-    let comments = document.querySelectorAll(".comment");
-    comments.forEach((comment) => {
-        comment.classList.add("disappear");
-    });
-});
