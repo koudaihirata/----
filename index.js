@@ -3,7 +3,6 @@ const sendBtn = document.querySelector(".send_btn");
 const resetBtn = document.querySelector(".reset");
 const commentArea = document.querySelector(".comment_area");
 const textBox = document.getElementById("text");
-const Delete = document.querySelector(".delete");
 
 
 // "sendBtn"ボタンがクリックされたときのイベントリスナー
@@ -64,3 +63,11 @@ resetBtn.addEventListener("click", () => {
     });
 });
 
+const Delete = document.querySelector(".delete");
+
+Delete.addEventListener("click", () => {
+    let comments = document.querySelectorAll(".comment");
+    comments.forEach((comment) => {
+        comment.classList.add("disappear");
+    });
+});
