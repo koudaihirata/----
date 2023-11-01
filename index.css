@@ -3,6 +3,7 @@ html,body{
     padding: 0;
     height: 100%;
     width: 100%;
+    user-select: none;
 }
 
 .text_wrap{
@@ -35,24 +36,23 @@ html,body{
 }
 
 .comment{
-    background-color: #fff;
     width: 300px;
     height: 100px;
-    border-radius: 50px;
     font-size: 30px;
     text-align: center;
     line-height: 100px;
     position: absolute;
-    top: 50%;
-    left: 50%;
+    /* top: 50%;
+    left: 50%; */
     filter:drop-shadow(6px 6px 10px rgba(0, 0, 0, 0.4));
     animation-name: bounce;
     animation-duration: 1s;
+    /* transform:translate(-50%,-50%); */
 }
-.comment:hover{
+.comment:hover::before{
     background-color: #dddddd;
 }
-.comment::before,.comment::after{
+.comment::after{
     content: "";
     position: absolute;
     bottom: -19.5px; /* 吹き出しの位置を下部に移動 */
@@ -62,13 +62,21 @@ html,body{
     border-style: solid;
     border-color: #fff transparent transparent; /*吹き出しの色と透明度を調整 */
 }
-.comment:hover::after,.comment:hover::before{
-    border-color: #dddddd transparent ;
+.comment:hover::after{
+    border-color: #dddddd transparent transparent; /*吹き出しの色と透明度を調整 */
 }
+
 .comment::before{
-    border-color: rgba(0,0,0,0.1) transparent transparent; /* 影の色と透明度を調整 */
-    /* bottom: -20px; 影の位置を調整 */
+    content: "";
+    display: block;
+    background-color: #fff;
+    width: 300px;
+    height: 100px;
+    border-radius: 50px;
+    position: absolute;
+    z-index: -1;
 }
+
 @keyframes bounce {
     0%   { transform: translateY(0); opacity: 0; }
     50%  { transform: translateY(-20px); opacity: 0.5; }
