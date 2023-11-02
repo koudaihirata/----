@@ -5,16 +5,20 @@ html,body{
     width: 100%;
     user-select: none;
 }
-
+.text_box{
+    display: flex;
+    flex-direction: column;
+}
 .text_wrap{
     height: 20%;
     background-color: #333;
     width: 100%;
+    display: flex;
 }
 
 #text{
     height: 30%;
-    width: 50%;
+    width: 50em;
 }
 
 .send_btn{
@@ -130,3 +134,6 @@ html,body{
     transform-origin: center bottom;
 }
 
+small{
+    font-size: 5px;
+}

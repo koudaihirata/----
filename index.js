@@ -3,7 +3,7 @@ const sendBtn = document.querySelector(".send_btn");
 const resetBtn = document.querySelector(".reset");
 const commentArea = document.querySelector(".comment_area");
 const textBox = document.getElementById("text");
-
+const File = document.getElementById("file")
 
 // "sendBtn"ボタンがクリックされたときのイベントリスナー
 sendBtn.addEventListener( "click", () =>{
@@ -12,13 +12,13 @@ sendBtn.addEventListener( "click", () =>{
     // 作成したdiv要素に"comment"クラスを追加
     comment.classList.add("comment");
 
-    // 作成したdiv要素の内部HTMLにテキストボックスの値と時刻を設定
+    // 作成したdiv要素の内部HTMLにテキストボックスの値を設定
     let time = new Date();
     let hours = time.getHours();
     let minutes = time.getMinutes();
     let seconds = time.getSeconds();
     let Time = "   " + hours + ":" + minutes + ":" + seconds
-    comment.innerHTML = textBox.value + "<small>" + Time + "</small>";
+    comment.innerHTML = textBox.value + File.value + "<small>" + Time + "</small>";
 
     // 親divの中に子divを作成
     let CDelete = document.createElement("div");
